@@ -27,18 +27,16 @@ Things you may want to cover:
 
 ## users テーブル
 
-| Column         | Type    | Options     |
-| -------------- | ------  | ----------- |
-| nickname       | string  | null: false |
-| email          | string  | null: false |
-| password       | string  | null: false |
-| first_name     | string  | null: false |
-| family_name    | string  | null: false |
-| ja_first_name  | string  | null: false |
-| ja_family_name | string  | null: false |
-| birth_year     | integer | null: false |
-| birth_month    | integer | null: false |
-| birth_day      | integer | null: false |
+| Column         | Type   | Options     |
+| -------------- | ------ | ----------- |
+| nickname       | string | null: false |
+| email          | string | null: false |
+| password       | string | null: false |
+| first_name     | string | null: false |
+| family_name    | string | null: false |
+| ja_first_name  | string | null: false |
+| ja_family_name | string | null: false |
+| birth          | date   | null: false |
 
 ### Association
 
@@ -48,18 +46,17 @@ Things you may want to cover:
 
 ## items テーブル
 
-| Column         | Type      | Options                        |
-| -------------- | --------- | ------------------------------ |
-| image          | string    | null: false                    |
-| name           | string    | null: false                    |
-| description    | string    | null: false                    |
-| price          | integer   | null: false                    |
-| category       | string    | null: false                    |
-| condition      | string    | null: false                    |
-| fee            | integer   | null: false                    |
-| region         | string    | null: false                    |
-| shipping_days  | integer   | null: false                    |
-| user           | reference | null: false, foreign_key: true |
+| Column           | Type      | Options                        |
+| ---------------- | --------- | ------------------------------ |
+| name             | string    | null: false                    |
+| description      | string    | null: false                    |
+| price            | integer   | null: false                    |
+| category_id      | integer   | null: false                    |
+| condition_id     | integer   | null: false                    |
+| fee_id           | integer   | null: false                    |
+| region_id        | integer   | null: false                    |
+| shipping_days_id | integer   | null: false                    |
+| user             | reference | null: false, foreign_key: true |
 
 
 ### Association
@@ -85,10 +82,6 @@ Things you may want to cover:
 
 | Column        | Type       | Options                        |
 | ------------- | ---------- | ------------------------------ |
-| credit_number | integer    | null: false                    |
-| cvc           | integer    | null: false                    |
-| exp_month     | integer    | null: false                    |
-| exp_year      | integer    | null: false                    |
 | user          | references | null: false, foreign_key: true |
 | item          | references | null: false, foreign_key: true |
 
@@ -104,10 +97,10 @@ Things you may want to cover:
 | Column        | Type       | Options                        |
 | -------       | ---------- | ------------------------------ |
 | postal_code   | string     | null: false                    |
-| prefecture    | string     | null: false                    |
+| prefecture_id | string     | null: false                    |
 | city          | string     | null: false                    |
 | address_line  | string     | null: false                    |
-| phone_number  | integer    | null: false                    |
+| phone_number  | string     | null: false                    |
 | purchase_item | references | null: false, foreign_key: true |
 
 ### Association
