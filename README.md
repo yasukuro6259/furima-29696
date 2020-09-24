@@ -49,7 +49,7 @@ Things you may want to cover:
 | Column           | Type      | Options                        |
 | ---------------- | --------- | ------------------------------ |
 | name             | string    | null: false                    |
-| description      | string    | null: false                    |
+| description      | text      | null: false                    |
 | price            | integer   | null: false                    |
 | category_id      | integer   | null: false                    |
 | condition_id     | integer   | null: false                    |
@@ -94,14 +94,15 @@ Things you may want to cover:
 
 ## addresses テーブル
 
-| Column        | Type       | Options                        |
-| -------       | ---------- | ------------------------------ |
-| postal_code   | string     | null: false                    |
-| prefecture_id | string     | null: false                    |
-| city          | string     | null: false                    |
-| address_line  | string     | null: false                    |
-| phone_number  | string     | null: false                    |
-| purchase_item | references | null: false, foreign_key: true |
+| Column          | Type       | Options                        |
+| -------         | ---------- | ------------------------------ |
+| postal_code     | string     | null: false                    |
+| prefecture_id   | string     | null: false                    |
+| city            | string     | null: false                    |
+| address_line    | string     | null: false                    |
+| building_number | string     | null: false                    |
+| phone_number    | string     | null: false                    |
+| purchase_item   | references | null: false, foreign_key: true |
 
 ### Association
 
