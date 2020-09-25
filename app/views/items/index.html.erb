@@ -1,0 +1,189 @@
+<%= render "shared/header" %>
+<div class='main'>
+
+  <%# 画面上部の「人生を変えるフリマアプリ」帯部分 %>
+  <div class='title-contents'>
+    <h2 class='service-title'>
+      人生を変えるフリマアプリ
+    </h2>
+    <p class='service-explain'>
+      FURIMAはだれでもかんたんに出品・購入できる
+    </p>
+    <p class='service-explain'>
+      フリマアプリです
+    </p>
+    <div class='store-btn'>
+      <%= link_to image_tag("https://linkmaker.itunes.apple.com/ja-jp/badge-lrg.svg?releaseDate=2011-09-21&kind=iossoftware&bubble=ios_apps", class:"apple-btn"), "#" %>
+      <%= link_to image_tag("dl-android.png", class:"google-btn"), "#" %>
+    </div>
+  </div>
+  <%# /画面上部の「人生を変えるフリマアプリ」帯部分  %>
+
+  <%# FURIMAが選ばれる3つの理由部分 %>
+  <div class='select-reason-contents'>
+    <h2 class='title'>
+      FURIMAが選ばれる3つの理由
+    </h2>
+    <ul class='reason-lists'>
+      <li class='list'>
+        <%= image_tag "furima-intro01.png", class:"list-pict" %>
+        <span class='reason-list-number'>1</span>
+        <h3 class='reason-list-text'>
+          <span class='reason-list-blue-text'>3分</span>
+          ですぐに出品
+        </h3>
+        <p class='reason-list-description'>
+          スマホで入力するだけで簡単に出品できる！
+        </p>
+      </li>
+      <li class='list'>
+        <%= image_tag "furima-intro02.png", class:"list-pict" %>
+        <span class='reason-list-number'>2</span>
+        <h3 class='reason-list-text'>
+          <span class='reason-list-blue-text'>シンプル</span>
+          で使いやすい
+        </h3>
+        <p class='reason-list-description'>
+          めんどくさい入力は必要なく、検索も購入もスムーズ！
+        </p>
+      </li>
+      <li class='list'>
+        <%= image_tag "furima-intro03.png", class:"list-pict" %>
+        <span class='reason-list-number'>3</span>
+        <h3 class='reason-list-text'>
+          手数料
+          <span class='reason-list-blue-text'>業界最安</span>
+        </h3>
+        <p class='reason-list-description'>
+          最大3%でお得に出品&購入！
+        </p>
+      </li>
+    </ul>
+  </div>
+  <%# /FURIMAが選ばれる3つの理由部分 %>
+
+  <%# 画面中央の「会員数日本一位」帯部分 %>
+  <div class='ad-contents'>
+    <h2 class='ad-title'>
+      会員数日本一位
+    </h2>
+    <p class='ad-explain'>
+      FURIMAは、フリマアプリで最も人気。
+    </p>
+    <p class='ad-explain'>
+      出品・購入回数も業界最多です！
+    </p>
+    <p class='ad-explain'>
+      ほしかったあの商品に出会えるかもしれません。
+    </p>
+    <div class='store-btn'>
+      <%= link_to image_tag("https://linkmaker.itunes.apple.com/ja-jp/badge-lrg.svg?releaseDate=2011-09-21&kind=iossoftware&bubble=ios_apps", class:"apple-btn"), "#" %>
+      <%= link_to image_tag("dl-android.png", class:"google-btn"), "#" %>
+    </div>
+  </div>
+  <%# /画面中央の「会員数日本一位」帯部分 %>
+
+  <%# FURIMAの特徴 %>
+  <div class='feature-contents'>
+    <h2 class='title'>
+      FURIMAの特徴
+    </h2>
+    <ul class='feature-lists'>
+      <li class='list'>
+        <%= image_tag "furima-intro04.png", class:"list-pict" %>
+        <h3 class='feature-list-text'>
+          簡単に売り買いできる
+        </h3>
+        <p class='feature-list-description'>
+          スマホひとつで、いつでもどこでも簡単に出品・購入が可能！
+        </p>
+      </li>
+      <li class='list'>
+        <%= image_tag "furima-intro05.png", class:"list-pict" %>
+        <h3 class='feature-list-text'>
+          売上金は即日振込みに対応
+        </h3>
+        <p class='feature-list-description'>
+          午前9時までに振込を依頼いただければ、翌日に指定の口座に入金いたします。
+        </p>
+      </li>
+      <li class='list'>
+        <%= image_tag "furima-intro06.png", class:"list-pict" %>
+        <h3 class='feature-list-text'>
+          様々な支払いに対応
+        </h3>
+        <p class='feature-list-description'>
+          お支払いは、クレジットカードだけでなく、ポイントや売上金など多彩な方法があります。
+        </p>
+      </li>
+    </ul>
+  </div>
+  <%# /FURIMAの特徴 %>
+
+  <%# 商品一覧 %>
+  <div class='item-contents'>
+    <h2 class='title'>ピックアップカテゴリー</h2>
+    <%= link_to '新規投稿商品', "#", class: "subtitle" %>
+    <ul class='item-lists'>
+
+      <%# 商品のインスタンス変数になにか入っている場合、中身のすべてを展開できるようにしましょう %>
+      <li class='list'>
+        <%= link_to "#" do %>
+        <div class='item-img-content'>
+          <%= image_tag "item-sample.png", class: "item-img" %>
+
+          <%# 商品が売れていればsold outを表示しましょう %>
+          <div class='sold-out'>
+            <span>Sold Out!!</span>
+          </div>
+          <%# //商品が売れていればsold outを表示しましょう %>
+
+        </div>
+        <div class='item-info'>
+          <h3 class='item-name'>
+            <%= "商品名" %>
+          </h3>
+          <div class='item-price'>
+            <span><%= "販売価格" %>円<br>(税込み)</span>
+            <div class='star-btn'>
+              <%= image_tag "star.png", class:"star-icon" %>
+              <span class='star-count'>0</span>
+            </div>
+          </div>
+        </div>
+        <% end %>
+      </li>
+      <%# //商品のインスタンス変数になにか入っている場合、中身のすべてを展開できるようにしましょう %>
+
+      <%# 商品がない場合のダミー %>
+      <%# 商品がある場合は表示されないようにしましょう %>
+      <li class='list'>
+        <%= link_to '#' do %>
+        <%= image_tag "https://s3-ap-northeast-1.amazonaws.com/mercarimaster/uploads/captured_image/content/10/a004.png", class: "item-img" %>
+        <div class='item-info'>
+          <h3 class='item-name'>
+            商品を出品してね！
+          </h3>
+          <div class='item-price'>
+            <span>99999999円<br>(税込み)</span>
+            <div class='star-btn'>
+              <%= image_tag "star.png", class:"star-icon" %>
+              <span class='star-count'>0</span>
+            </div>
+          </div>
+        </div>
+        <% end %>
+      </li>
+      <%# //商品がある場合は表示されないようにしましょう %>
+      <%# /商品がない場合のダミー %>
+    </ul>
+  </div>
+  <%# /商品一覧 %>
+</div>
+<div class='purchase-btn'>
+  <span class='purchase-btn-text'>出品する</span>
+  <a href="#">
+    <%= image_tag 'camera.png' , size: '185x50' ,class: "purchase-btn-icon" %>
+  </a>
+</div>
+<%= render "shared/footer" %>

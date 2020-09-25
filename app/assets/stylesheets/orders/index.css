@@ -1,0 +1,156 @@
+.transaction-contents {
+  width: 100vw;
+  background-color: #f5f5f5;
+  display: flex;
+  justify-content: center;
+}
+
+.transaction-main {
+  background-color: #FFF;
+  width: 70vw;
+  min-width: 450px;
+  padding: 10vh 10vw;
+}
+
+.transaction-title-text {
+  text-align: center;
+  border-bottom: 2px solid #f5f5f5;
+  font-weight: bold;
+  font-size: 22px;
+}
+
+/* 購入内容の表示 */
+.buy-item-info {
+  height: 150px;
+  border-bottom: 2px solid #f5f5f5;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.buy-item-img {
+  margin-right: 20px;
+  height: 130px;
+  width: 250px;
+  object-fit: contain;
+}
+
+.buy-item-right-content {
+  display: flex;
+  flex-direction: column;
+}
+
+.buy-item-text {
+  font-size: 20px;
+}
+
+.buy-item-price {
+  display: flex;
+  font-weight: bold;
+  align-items: center;
+  margin-top: 10px;
+}
+
+.item-price-text {
+  font-size: 15px;
+}
+
+.item-price-sub-text {
+  font-size: 12px;
+}
+
+/* /購入内容の表示 */
+
+/* 支払額の表示 */
+.item-payment {
+  height: 120px;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  border-bottom: 2px solid #f5f5f5;
+  font-weight: bold;
+}
+
+.item-payment-title {
+  font-size: 20px;
+}
+
+.item-payment-price {
+  font-size: 25px;
+}
+
+/* /支払額の表示 */
+
+/* カード情報の入力 */
+.credit-card-form {
+  border-bottom: 2px solid #f5f5f5;
+  margin-top: 15px;
+  padding-bottom: 30px;
+}
+
+.info-input-haedline {
+  text-align: center;
+  font-weight: bold;
+  font-size: 20px;
+}
+
+.available-card {
+  display: flex;
+  height: 35px;
+}
+
+.card-logo {
+  width: 40px;
+  margin: 5px 5px;
+}
+
+.input-expiration-date-wrap {
+  width: 100%;
+  display: flex;
+  text-align: center;
+  line-height: 55px;
+}
+
+.input-expiration-date {
+  width: 20%;
+  margin-top: 5px;
+  height: 48px;
+  border-radius: 4px;
+  border: 1px solid #ccc;
+  background: #fff;
+  font-size: 16px;
+  resize: none;
+  line-height: 45px;
+  text-align: center;
+}
+
+/* /カード情報の入力 */
+
+/* 配送先の入力 */
+.shipping-address-form {
+  margin-top: 15px;
+}
+
+.form-any {
+  background: #ccc;
+  border-radius: 2px;
+  color: #fff;
+  font-size: 12px;
+  padding: 2px 4px;
+}
+
+.buy-btn {
+  width: 50%;
+  margin: 0 auto;
+  margin-top: 50px;
+}
+
+.buy-red-btn {
+  width: 100%;
+  background: #ea352d;
+  border: 1px solid #ea352d;
+  color: #fff;
+  line-height: 48px;
+  font-size: 14px;
+  cursor: pointer;
+}
