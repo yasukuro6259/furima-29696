@@ -1,7 +1,7 @@
 <%= render "shared/second-header"%>
 
 <%# 「モデル名」にはUserモデルであれば@userを渡しましょう。「新規登録機能へのパス」は、devise導入後にrails routesを実行してdevise/registrations#createへのパスを確認し、記載してください。 %>
-<%= form_with model:@user, url: user_session_path, class: 'registration-main', local: true do |f| %>
+<%= form_with model:@user, url: user_registration_path, class: 'registration-main', local: true do |f| %>
 <%# //「モデル名」にはUserモデルであれば@userを渡しましょう。「新規登録機能へのパス」は、devise導入後にrails routesを実行してdevise/registrations#createへのパスを確認し、記載してください。 %>
 <div class='form-wrap'>
   <div class='form-header'>
@@ -19,21 +19,22 @@
       <label class="form-text">ニックネーム</label>
       <span class="indispensable">必須</span>
     </div>
-    <%= f.text_area :hoge, class:"input-default", id:"nickname", placeholder:"例) furima太郎", maxlength:"40" %>
+    <%= f.text_area :nickname , class:"input-default", id:"nickname", placeholder:"例) furima太郎", maxlength:"40" %>
+    <%# name属性にカラム名を入れる form_withメソッドのルール? emailとpasswordはいらないかも %>
   </div>
   <div class="form-group">
     <div class='form-text-wrap'>
       <label class="form-text">メールアドレス</label>
       <span class="indispensable">必須</span>
     </div>
-    <%= f.email_field :hoge, class:"input-default", id:"email", placeholder:"PC・携帯どちらでも可", autofocus: true %>
+    <%= f.email_field :email, class:"input-default", id:"email", placeholder:"PC・携帯どちらでも可", autofocus: true %>
   </div>
   <div class="form-group">
     <div class='form-text-wrap'>
       <label class="form-text">パスワード</label>
       <span class="indispensable">必須</span>
     </div>
-    <%= f.password_field :hoge, class:"input-default", id:"password", placeholder:"6文字以上の半角英数字" %>
+    <%= f.password_field :password, class:"input-default", id:"password", placeholder:"6文字以上の半角英数字" %>
     <p class='info-text'>※英字と数字の両方を含めて設定してください</p>
   </div>
   <div class="form-group">
@@ -41,7 +42,7 @@
       <label class="form-text">パスワード(確認)</label>
       <span class="indispensable">必須</span>
     </div>
-    <%= f.password_field :hoge, class:"input-default", id:"password-confirmation", placeholder:"同じパスワードを入力して下さい" %>
+    <%= f.password_field :password_confoirmation, class:"input-default", id:"password-confirmation", placeholder:"同じパスワードを入力して下さい" %>
   </div>
   <div class="form-group">
     <p class='form-info-header'>
@@ -57,8 +58,8 @@
       <span class="indispensable">必須</span>
     </div>
     <div class='input-name-wrap'>
-      <%= f.text_area :hoge, class:"input-name", id:"first-name", placeholder:"例) 山田" %>
-      <%= f.text_area :hoge, class:"input-name", id:"last-name", placeholder:"例) 陸太郎" %>
+      <%= f.text_area :family_name, class:"input-name", id:"first-name", placeholder:"例) 山田" %>
+      <%= f.text_area :fist_name, class:"input-name", id:"last-name", placeholder:"例) 陸太郎" %>
     </div>
   </div>
   <div class="form-group">
@@ -67,8 +68,8 @@
       <span class="indispensable">必須</span>
     </div>
     <div class='input-name-wrap'>
-      <%= f.text_area :hoge, class:"input-name", id:"first-name-kana", placeholder:"例) ヤマダ" %>
-      <%= f.text_area :hoge, class:"input-name", id:"last-name-kana", placeholder:"例) リクタロウ" %>
+      <%= f.text_area :ja_family_name, class:"input-name", id:"first-name-kana", placeholder:"例) ヤマダ" %>
+      <%= f.text_area :ja_first_name, class:"input-name", id:"last-name-kana", placeholder:"例) リクタロウ" %>
     </div>
   </div>
   <div class="form-group">
@@ -79,7 +80,7 @@
     <div class='input-birth-wrap'>
       <%= raw sprintf(
                   f.date_select(
-                    :hoge,
+                    :birth,
                     class:'select-birth',
                     id:"birth-date",
                     use_month_numbers: true,
