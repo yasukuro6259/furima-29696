@@ -3,7 +3,7 @@ class User < ApplicationRecord
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
-  
+
   validates :nickname, presence: true, length: { maximum: 40 }
   validates :birth, presence: true
   PASSWORD_RULE = /\A(?=.*?[a-z])(?=.*?[\d])[a-z\d]+\z/i.freeze
@@ -14,5 +14,4 @@ class User < ApplicationRecord
   FURIGANA_NAME_RULE = /\A[ア-ン゛゜ァ-ォャ-ョー「」、]+\z/.freeze
   validates_format_of :ja_family_name, with: FURIGANA_NAME_RULE, message: 'は全角カタカナで設定してください'
   validates_format_of :ja_first_name, with: FURIGANA_NAME_RULE, message: 'は全角カタカナで設定してください'
-
 end
