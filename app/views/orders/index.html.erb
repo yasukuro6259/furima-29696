@@ -1,0 +1,130 @@
+<%= render "shared/second-header"%>
+
+<div class='transaction-contents'>
+  <div class='transaction-main'>
+    <h1 class='transaction-title-text'>
+      購入内容の確認
+    </h1>
+    <%# 購入内容の表示 %>
+    <div class='buy-item-info'>
+      <%= image_tag "item-sample.png", class: 'buy-item-img' %>
+      <div class='buy-item-right-content'>
+        <h2 class='buy-item-text'>
+          <%= "商品説明" %>
+        </h2>
+        <div class='buy-item-price'>
+          <p class='item-price-text'>¥<%= 999,999,999 %></p>
+          <p class='item-price-sub-text'>（税込）送料込み</p>
+        </div>
+      </div>
+    </div>
+    <%# /購入内容の表示 %>
+
+    <%# 支払額の表示 %>
+    <div class='item-payment'>
+      <h1 class='item-payment-title'>
+        支払金額
+      </h1>
+      <p class='item-payment-price'>
+        ¥<%= "販売価格" %>
+      </p>
+    </div>
+    <%# /支払額の表示 %>
+
+    <%= form_with id: 'charge-form', class: 'transaction-form-wrap',local: true do |f| %>
+    <%# カード情報の入力 %>
+    <div class='credit-card-form'>
+      <h1 class='info-input-haedline'>
+        クレジットカード情報入力
+      </h1>
+      <div class="form-group">
+        <div class='form-text-wrap'>
+          <label class="form-text">カード情報</label>
+          <span class="indispensable">必須</span>
+        </div>
+        <%= f.text_field 'hoge', class:"input-default", id:"card-number", placeholder:"カード番号(半角英数字)", maxlength:"16" %>
+        <div class='available-card'>
+          <%= image_tag 'card-visa.gif', class: 'card-logo'%>
+          <%= image_tag 'card-mastercard.gif', class: 'card-logo'%>
+          <%= image_tag 'card-jcb.gif', class: 'card-logo'%>
+          <%= image_tag 'card-amex.gif', class: 'card-logo'%>
+        </div>
+      </div>
+      <div class="form-group">
+        <div class='form-text-wrap'>
+          <label class="form-text">有効期限</label>
+          <span class="indispensable">必須</span>
+        </div>
+        <div class='input-expiration-date-wrap'>
+          <%= f.text_area 'hoge', class:"input-expiration-date", id:"card-exp-month", placeholder:"例)3" %>
+          <p>月</p>
+          <%= f.text_area 'hoge', class:"input-expiration-date", id:"card-exp-year", placeholder:"例)23" %>
+          <p>年</p>
+        </div>
+      </div>
+      <div class="form-group">
+        <div class='form-text-wrap'>
+          <label class="form-text">セキュリティコード</label>
+          <span class="indispensable">必須</span>
+        </div>
+        <%= f.text_field "hoge",class:"input-default", id:"card-cvc", placeholder:"カード背面4桁もしくは3桁の番号", maxlength:"4" %>
+      </div>
+    </div>
+    <%# /カード情報の入力 %>
+    
+    <%# 配送先の入力 %>
+    <div class='shipping-address-form'>
+      <h1 class='info-input-haedline'>
+        配送先入力
+      </h1>
+      <div class="form-group">
+        <div class='form-text-wrap'>
+          <label class="form-text">郵便番号</label>
+          <span class="indispensable">必須</span>
+        </div>
+        <%= f.text_field 'hoge', class:"input-default", id:"postal-code", placeholder:"例）123-4567", maxlength:"8" %>
+      </div>
+      <div class="form-group">
+        <div class='form-text-wrap'>
+          <label class="form-text">都道府県</label>
+          <span class="indispensable">必須</span>
+        </div>
+        <%= f.collection_select(:hoge, [], :hoge, :hoge, {}, {class:"select-box", id:"prefecture"}) %>
+      </div>
+      <div class="form-group">
+        <div class='form-text-wrap'>
+          <label class="form-text">市区町村</label>
+          <span class="indispensable">必須</span>
+        </div>
+        <%= f.text_field 'hoge', class:"input-default", id:"city", placeholder:"例）横浜市緑区"%>
+      </div>
+      <div class="form-group">
+        <div class='form-text-wrap'>
+          <label class="form-text">番地</label>
+          <span class="indispensable">必須</span>
+        </div>
+        <%= f.text_field 'hoge', class:"input-default", id:"addresses", placeholder:"例）青山1-1-1"%>
+      </div>
+      <div class="form-group">
+        <div class='form-text-wrap'>
+          <label class="form-text">建物名</label>
+          <span class="form-any">任意</span>
+        </div>
+        <%= f.text_field 'hoge', class:"input-default", id:"building", placeholder:"例）柳ビル103"%>
+      </div>
+      <div class="form-group">
+        <div class='form-text-wrap'>
+          <label class="form-text">電話番号</label>
+          <span class="indispensable">必須</span>
+        </div>
+        <%= f.text_field 'hoge', class:"input-default", id:"phone-number", placeholder:"例）09012345678",maxlength:"11"%>
+      </div>
+    </div>
+    <%# /配送先の入力 %>
+    <div class='buy-btn'>
+      <%= f.submit "購入" ,class:"buy-red-btn" %>
+    </div>
+    <% end %>
+  </div>
+</div>
+<%= render "shared/second-footer"%>
