@@ -21,7 +21,7 @@
         <p>
           クリックしてファイルをアップロード
         </p>
-        <%= f.file_field :hoge, id:"item-image" %>
+        <%= f.file_field :image, id:"item-image" %>
       </div>
     </div>
     <%# /出品画像 %>
@@ -31,13 +31,13 @@
         商品名
         <span class="indispensable">必須</span>
       </div>
-      <%= f.text_area :hoge, class:"items-text", id:"item-name", placeholder:"商品名（必須 40文字まで)", maxlength:"40" %>
+      <%= f.text_area :name, class:"items-text", id:"item-name", placeholder:"商品名（必須 40文字まで)", maxlength:"40" %>
       <div class="items-explain">
         <div class="weight-bold-text">
           商品の説明
           <span class="indispensable">必須</span>
         </div>
-        <%= f.text_area :hoge, class:"items-text", id:"item-info", placeholder:"商品の説明（必須 1,000文字まで）（色、素材、重さ、定価、注意点など）例）2010年頃に1万円で購入したジャケットです。ライトグレーで傷はありません。あわせやすいのでおすすめです。" ,rows:"7" ,maxlength:"1000" %>
+        <%= f.text_area :description, class:"items-text", id:"item-info", placeholder:"商品の説明（必須 1,000文字まで）（色、素材、重さ、定価、注意点など）例）2010年頃に1万円で購入したジャケットです。ライトグレーで傷はありません。あわせやすいのでおすすめです。" ,rows:"7" ,maxlength:"1000" %>
       </div>
     </div>
     <%# /商品名と商品説明 %>
