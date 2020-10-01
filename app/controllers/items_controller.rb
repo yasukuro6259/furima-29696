@@ -1,6 +1,6 @@
 class ItemsController < ApplicationController
   def index
-    @items = Item.all
+    @items = Item.includes(:user).order("created_at DESC") #includesメソッドはN+1問題を解消する
   end
 
   def new
