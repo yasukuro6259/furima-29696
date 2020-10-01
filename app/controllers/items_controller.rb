@@ -15,7 +15,11 @@ class ItemsController < ApplicationController
       render :new # newアクションを実行
     end
   end
-
+  
+  def show
+    @item = Item.find(params[:id])
+  end
+  
   private
 
   def item_params
