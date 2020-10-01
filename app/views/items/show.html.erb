@@ -32,6 +32,7 @@
     <%# 商品が売れていない場合はこちらを表示しましょう %>
     <%= link_to '購入画面に進む', "#" ,class:"item-red-btn"%>
     <%# //商品が売れていない場合はこちらを表示しましょう %>
+  <% end %> 
   
     <div class="item-explain-box">
       <span><%= @item.name %></span>
@@ -75,8 +76,8 @@
       </div>
     </div>
   </div>
-  <% end %> 
-  
+
+
   <%# /商品の概要 %>
 
   <div class="comment-box">
