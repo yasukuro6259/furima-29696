@@ -68,25 +68,58 @@ RSpec.describe Item, type: :model do
         @item.valid?
         expect(@item.errors.full_messages).to include("Category can't be blank", 'Category is not a number')
       end
+
+      it 'カテゴリー情報が「---」(id = 1)では登録できない' do
+        @item.category_id = 1
+        @item.valid?
+        expect(@item.errors.full_messages).to include("Category must be other than 1")
+      end
+
       it '商品の状態が空では登録できない' do
         @item.condition_id = ''
         @item.valid?
         expect(@item.errors.full_messages).to include("Condition can't be blank", 'Condition is not a number')
       end
+
+      it '商品の状態が「---」(id = 1)では登録できない' do
+        @item.condition_id = 1
+        @item.valid?
+        expect(@item.errors.full_messages).to include("Condition must be other than 1")
+      end
+
       it '配送料負担が空では登録できない' do
         @item.fee_id = ''
         @item.valid?
         expect(@item.errors.full_messages).to include("Fee can't be blank", 'Fee is not a number')
       end
+
+      it '配送料負担が「---」(id = 1)では登録できない' do
+        @item.fee_id = 1
+        @item.valid?
+        expect(@item.errors.full_messages).to include("Fee must be other than 1")
+      end
+
       it '発送元の地域が空では登録できない' do
         @item.region_id = ''
         @item.valid?
         expect(@item.errors.full_messages).to include("Region can't be blank", 'Region is not a number')
       end
+
+      it '発送元の地域が「---」(id = 1)では登録できない' do
+        @item.region_id = 1
+        @item.valid?
+        expect(@item.errors.full_messages).to include("Region must be other than 1")
+      end
+
       it '発送までの日数が空では登録できない' do
         @item.shipping_day_id = ''
         @item.valid?
         expect(@item.errors.full_messages).to include("Shipping day can't be blank", 'Shipping day is not a number')
+      end
+      it '発送まで日数が「---」(id = 1)では登録できない' do
+        @item.shipping_day_id = 1
+        @item.valid?
+        expect(@item.errors.full_messages).to include("Shipping day must be other than 1")
       end
     end
   end
