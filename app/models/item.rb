@@ -8,7 +8,7 @@ class Item < ApplicationRecord
   belongs_to_active_hash :region
   belongs_to_active_hash :shipping_day
   has_many :comments
-  has_one :purchase_item
+  has_one :order
 
   with_options presence: true do
     validates :name, length: { maximum: 40 }

@@ -7,13 +7,13 @@
     </h1>
     <%# 購入内容の表示 %>
     <div class='buy-item-info'>
-      <%= image_tag "item-sample.png", class: 'buy-item-img' %>
+      <%= image_tag @item.image, class: 'buy-item-img' %>
       <div class='buy-item-right-content'>
         <h2 class='buy-item-text'>
-          <%= "商品説明" %>
+          <%= @item.description %>
         </h2>
         <div class='buy-item-price'>
-          <p class='item-price-text'>¥<%= 999,999,999 %></p>
+          <p class='item-price-text'>¥<%= @item.price %></p>
           <p class='item-price-sub-text'>（税込）送料込み</p>
         </div>
       </div>
@@ -26,7 +26,7 @@
         支払金額
       </h1>
       <p class='item-payment-price'>
-        ¥<%= "販売価格" %>
+        ¥<%= @item.price %>
       </p>
     </div>
     <%# /支払額の表示 %>
@@ -89,7 +89,7 @@
           <label class="form-text">都道府県</label>
           <span class="indispensable">必須</span>
         </div>
-        <%= f.collection_select(:hoge, [], :hoge, :hoge, {}, {class:"select-box", id:"prefecture"}) %>
+        <%= f.collection_select(:region_id, Region.all, :id, :name, {}, {class:"select-box", id:"prefecture"}) %>
       </div>
       <div class="form-group">
         <div class='form-text-wrap'>

@@ -78,7 +78,7 @@ Things you may want to cover:
 
 
 
-## orders_items テーブル
+## orders テーブル
 
 | Column        | Type       | Options                        |
 | ------------- | ---------- | ------------------------------ |
