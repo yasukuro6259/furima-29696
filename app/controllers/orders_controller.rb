@@ -2,27 +2,21 @@ class OrdersController < ApplicationController
   before_action :move_to_index
 
   def index
-    @item = Item.find(params[:item_id]) #binding.pryでparamsの内容を確認
+    @item = Item.find(params[:item_id]) #binding.pryでparamsの内容を確認     @item = Item.find(params[:id]
+    @order_address = OrderAddress.new
+    
   end
-
+  
   def create
-    @order = Order.new(user_id: current_user.id, item_id: params[:item_id])
-    if @order.valid? #エラーメッセージを@orderに含めるため
+    @order_address = OrderAddress.new(postal_code: order_params[:postal_code],region_id: order_params[:region_id], city: order_params[:city], address_line: order_params[:address_line], building_number: order_params[:building_number], phone_number: order_params[:phone_number], user_id: order_params[:user_id], item_id: params[:item_id])
+    if @order_address.valid?
       pay_item
-      @order.save
-      return redirect_to root_path
+      @order_address.save
+      redirect_to root_path
     else
-      redirect_to item_path(@item.id)
+      render action: :index
     end
 
-    # @address = Address.new(address_params)
-    # if @address.valid?
-    #   pay_item
-    #   @address.save
-    #   return redirect_to root_path
-    # else
-    #   redirect_to item_path(@item.id)
-    # end
   end
 
   private
@@ -32,13 +26,12 @@ class OrdersController < ApplicationController
     end
   end
 
-  def order_params
-    params.permit(:token)  #.merge(user_id: current_user.id )
-  end
-
-  # def address_params
-  #   params.permit(:potal_code, :region_id, :city, :address_line, :building_number, :phone_number, :order_id)
+  # def order_params
+  #   params.permit(:token)  #.merge(user_id: current_user.id )
   # end
+  def order_params
+    params.require(:order_address).permit(:postal_code, :region_id, :city, :address_line, :building_number, :phone_number).merge(token: params[:token], user_id: current_user.id) #merge(キー1: バリュー1,キー2: バリュー2)、なぜuser_idが必要？
+  end
 
   def pay_item
     @item = Item.find(params[:item_id])
