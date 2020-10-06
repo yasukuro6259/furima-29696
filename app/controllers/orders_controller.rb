@@ -14,7 +14,7 @@ class OrdersController < ApplicationController
       @order_address.save
       redirect_to root_path
     else
-      render action: :index
+      render_to item_path(@item.id)
     end
 
   end
@@ -26,11 +26,8 @@ class OrdersController < ApplicationController
     end
   end
 
-  # def order_params
-  #   params.permit(:token)  #.merge(user_id: current_user.id )
-  # end
   def order_params
-    params.require(:order_address).permit(:postal_code, :region_id, :city, :address_line, :building_number, :phone_number).merge(token: params[:token], user_id: current_user.id) #merge(キー1: バリュー1,キー2: バリュー2)、なぜuser_idが必要？
+    params.require(:order_address).permit(:postal_code, :region_id, :city, :address_line, :building_number, :phone_number).merge(token: params[:token], user_id: current_user.id) #merge(キー1: バリュー1,キー2: バリュー2, ...)
   end
 
   def pay_item
