@@ -8,13 +8,14 @@ class OrdersController < ApplicationController
   end
   
   def create
-    @order_address = OrderAddress.new(postal_code: order_params[:postal_code],region_id: order_params[:region_id], city: order_params[:city], address_line: order_params[:address_line], building_number: order_params[:building_number], phone_number: order_params[:phone_number], user_id: order_params[:user_id], item_id: params[:item_id])
+    @order_address = OrderAddress.new(order_params)
+    binding.pry
     if @order_address.valid?
       pay_item
-      @order_address.save
+      @order_address.select_save
       redirect_to root_path
     else
-      render_to item_path(@item.id)
+      redirect_to item_path(params[:item_id])
     end
 
   end
@@ -27,12 +28,12 @@ class OrdersController < ApplicationController
   end
 
   def order_params
-    params.require(:order_address).permit(:postal_code, :region_id, :city, :address_line, :building_number, :phone_number).merge(token: params[:token], user_id: current_user.id) #merge(キー1: バリュー1,キー2: バリュー2, ...)
+    params.require(:order_address).permit(:postal_code, :region_id, :city, :address_line, :building_number, :phone_number).merge(token: params[:token], user_id: current_user.id, item_id: params[:item_id]) #merge(キー1: バリュー1,キー2: バリュー2, ...)
   end
 
   def pay_item
     @item = Item.find(params[:item_id])
-    Payjp.api_key = "sk_test_8f350ff5cbb40cbf8a94ea73" # PAY.JPテスト秘密鍵
+    Payjp.api_key = ENV["PAYJP_SECRET_KEY"] # PAY.JPテスト秘密鍵
     Payjp::Charge.create(
       amount: @item.price,
       card: order_params[:token],
