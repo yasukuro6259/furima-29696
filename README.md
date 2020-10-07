@@ -41,7 +41,7 @@ Things you may want to cover:
 ### Association
 
 - has_many :items
-- has_many :purchase_items
+- has_many :orders_items
 - has_many :comments
 
 ## items テーブル
@@ -63,7 +63,7 @@ Things you may want to cover:
 
 - belongs_to :user
 - has_many :comments
-- has_one :purchase_item
+- has_one :orders_item
 
 ## comments テーブル
 | Column        | Type       | Options                        |
@@ -78,7 +78,7 @@ Things you may want to cover:
 
 
 
-## purchase_items テーブル
+## orders テーブル
 
 | Column        | Type       | Options                        |
 | ------------- | ---------- | ------------------------------ |
@@ -97,13 +97,13 @@ Things you may want to cover:
 | Column          | Type       | Options                        |
 | -------         | ---------- | ------------------------------ |
 | postal_code     | string     | null: false                    |
-| prefecture_id   | integer    | null: false                    |
+| region_id       | integer    | null: false                    |
 | city            | string     | null: false                    |
 | address_line    | string     | null: false                    |
 | building_number | string     | null: false                    |
 | phone_number    | string     | null: false                    |
-| purchase_item   | references | null: false, foreign_key: true |
+| order           | references | null: false, foreign_key: true |
 
 ### Association
 
-- belongs_to :purchase_item
+- belongs_to :order
