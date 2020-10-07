@@ -1,6 +1,6 @@
 class OrdersController < ApplicationController
   before_action :move_to_index
-  before_action :ger_item_infomation, only: [:index, :create]
+  before_action :get_item_infomation, only: [:index, :create]
 
   def index
     @order_address = OrderAddress.new
