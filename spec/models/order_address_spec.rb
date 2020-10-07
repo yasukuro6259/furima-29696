@@ -9,12 +9,8 @@ RSpec.describe OrderAddress, type: :model do
       it '郵便番号、住所（都道府県、市町村、番地）、電話番号、購入ユーザーid、購入商品id、トークンが存在すれば登録できる' do
         expect(@order_address).to be_valid
       end
-      it '電話番号が11桁以下で登録できる' do
-        @order_address.phone_number = '09011111111'
-        expect(@order_address).to be_valid
-      end
-      it '郵便番号が3桁-4桁であれば登録できる' do
-        @order_address.postal_code = '331-4949'
+      it '建物番号が空でも登録できる' do
+        @order_address.building_number = ''
         expect(@order_address).to be_valid
       end
     end
