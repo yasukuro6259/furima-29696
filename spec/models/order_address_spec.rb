@@ -17,20 +17,19 @@ RSpec.describe OrderAddress, type: :model do
         @order_address.postal_code = '331-4949'
         expect(@order_address).to be_valid
       end
-
     end
 
     context '購入がうまくいかないとき' do
       it '郵便番号が空だと登録できない' do
         @order_address.postal_code = ''
         @order_address.valid?
-        expect(@order_address.errors.full_messages).to include("Postal code can't be blank", "Postal code には - を含めて設定してください")
+        expect(@order_address.errors.full_messages).to include("Postal code can't be blank", 'Postal code には - を含めて設定してください')
       end
 
       it '郵便番号に「-」がないと登録できない' do
         @order_address.postal_code = '3310804'
         @order_address.valid?
-        expect(@order_address.errors.full_messages).to include("Postal code には - を含めて設定してください")
+        expect(@order_address.errors.full_messages).to include('Postal code には - を含めて設定してください')
       end
 
       it '都道府県が空では登録できない' do
@@ -38,7 +37,7 @@ RSpec.describe OrderAddress, type: :model do
         @order_address.valid?
         expect(@order_address.errors.full_messages).to include("Region can't be blank")
       end
-     
+
       it '市町村が空では登録できない' do
         @order_address.city = ''
         @order_address.valid?
@@ -60,7 +59,7 @@ RSpec.describe OrderAddress, type: :model do
       it '電話番号が12桁以上では登録できない' do
         @order_address.phone_number = '028242334233'
         @order_address.valid?
-        expect(@order_address.errors.full_messages).to include("Phone number を正しく入力してください")
+        expect(@order_address.errors.full_messages).to include('Phone number を正しく入力してください')
       end
 
       it '購入したユーザのidが空では登録できない' do
