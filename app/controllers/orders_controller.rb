@@ -1,8 +1,8 @@
 class OrdersController < ApplicationController
   before_action :move_to_index
+  before_action :ger_item_infomation, only: [:index, :create]
 
   def index
-    @item = Item.find(params[:item_id]) # binding.pryでparamsの内容を確認     @item = Item.find(params[:id]
     @order_address = OrderAddress.new
   end
 
@@ -18,16 +18,15 @@ class OrdersController < ApplicationController
   end
 
   private
-
   def move_to_index
     @item = Item.find(params[:item_id])
-    if user_signed_in? == false
-      redirect_to root_path
-    elsif current_user.id == @item.user_id
-      redirect_to root_path
-    elsif @item.order.present?
+    if user_signed_in? == false || current_user.id == @item.user_id || @item.order.present?
       redirect_to root_path
     end
+  end
+
+  def get_item_infomation
+    @item = Item.find(params[:item_id])
   end
 
   def order_params
@@ -35,7 +34,6 @@ class OrdersController < ApplicationController
   end
 
   def pay_item
-    @item = Item.find(params[:item_id])
     Payjp.api_key = ENV['PAYJP_SECRET_KEY'] # PAY.JPテスト秘密鍵
     Payjp::Charge.create(
       amount: @item.price,

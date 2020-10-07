@@ -4,7 +4,6 @@
 // that code so it'll be compiled.
 
 require("@rails/ujs").start()
-// require("turbolinks").start()  //クレジット機能実装する際にコメントアウトした
 require("@rails/activestorage").start()
 require("channels")
 require("../calc_commission")
