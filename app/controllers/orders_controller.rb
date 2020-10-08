@@ -13,15 +13,17 @@ class OrdersController < ApplicationController
       @order_address.select_save
       redirect_to root_path
     else
-      redirect_to item_path(params[:item_id])
+      render :index
     end
   end
 
   private
   def move_to_index
     @item = Item.find(params[:item_id])
-    if user_signed_in? == false || current_user.id == @item.user_id || @item.order.present?
+    if (user_signed_in? && current_user.id == @item.user_id) || @item.order.present?
       redirect_to root_path
+    elsif user_signed_in? == false
+      redirect_to new_user_session_path 
     end
   end
 
