@@ -7,4 +7,4 @@ const profit = document.getElementById("profit")
 tax.innerHTML = commission_price;
 profit.innerHTML = profit_price;
 };
-// setInterval(calc_commission_profit, 100);
+setInterval(calc_commission_profit, 1000);
