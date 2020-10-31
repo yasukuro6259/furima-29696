@@ -7,9 +7,9 @@ const pay = ()=> {
     const formData = new FormData(formResult);
     const card = {
       number: formData.get("order_address[number]"),//検証ツールでname属性確認
-      cvc: formData.get("order_address[cvc]"),//検証ツールでname属性確認
-      exp_month: formData.get("order_address[exp_month]"),//検証ツールでname属性確認
-      exp_year: `20${formData.get("order_address[exp_year]")}`,//検証ツールでname属性確認
+      cvc: formData.get("order_address[cvc]"),
+      exp_month: formData.get("order_address[exp_month]"),
+      exp_year: `20${formData.get("order_address[exp_year]")}`,
     };
     Payjp.createToken(card, (status, response) => {
       if (status == 200) {
